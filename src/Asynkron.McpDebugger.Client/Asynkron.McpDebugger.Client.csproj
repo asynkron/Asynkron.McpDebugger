@@ -5,6 +5,33 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RootNamespace>Asynkron.McpDebugger.Client</RootNamespace>
+
+    <!-- NuGet Package Metadata -->
+    <PackageId>Asynkron.McpDebugger.Client</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>Asynkron</Authors>
+    <Company>Asynkron</Company>
+    <Description>Client library for AI-controlled cooperative debugging via MCP. Add DebugBreak.Here() or DebugBreak.HereAsync() calls to pause execution until an AI resumes it.</Description>
+    <PackageTags>debugging;mcp;ai;breakpoint;cooperative-debugging;claude</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/asynkron/Asynkron.McpDebugger</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/asynkron/Asynkron.McpDebugger</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+
+    <!-- Source Link -->
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+  </ItemGroup>
 
 </Project>

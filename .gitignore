@@ -52,3 +52,6 @@ artifacts/
 
 # JetBrains Rider
 *.sln.iml
+
+# Local NuGet packages
+nupkg/

@@ -6,17 +6,42 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RootNamespace>Asynkron.McpDebugger.Server</RootNamespace>
+
+    <!-- .NET Tool Configuration -->
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>mcpdebugger</ToolCommandName>
+    <IsPackable>true</IsPackable>
+
+    <!-- NuGet Package Metadata -->
     <PackageId>Asynkron.McpDebugger</PackageId>
     <Version>0.1.0</Version>
     <Authors>Asynkron</Authors>
-    <Description>AI-controlled cooperative debugger via MCP</Description>
+    <Company>Asynkron</Company>
+    <Description>AI-controlled cooperative debugger via MCP. Install as a global tool and use with Claude Code or other MCP-compatible AI assistants to inspect and control breakpoints in your .NET applications.</Description>
+    <PackageTags>debugging;mcp;ai;breakpoint;cooperative-debugging;claude;dotnet-tool</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/asynkron/Asynkron.McpDebugger</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/asynkron/Asynkron.McpDebugger</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+
+    <!-- Source Link -->
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Asynkron.McpDebugger.Client\Asynkron.McpDebugger.Client.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
   </ItemGroup>
 
 </Project>
