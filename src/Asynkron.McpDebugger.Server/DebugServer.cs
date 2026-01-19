@@ -49,9 +49,13 @@ public class DebugServer
                     b.Id,
                     b.File,
                     b.Line,
+                    b.Column,
                     b.Method,
                     b.Type,
-                    b.HitTime
+                    b.HitTime,
+                    b.SourceStartLine,
+                    b.SourceLines,
+                    b.CallStack
                 })
             });
         });

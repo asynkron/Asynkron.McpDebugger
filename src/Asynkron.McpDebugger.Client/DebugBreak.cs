@@ -122,16 +122,17 @@ public static class DebugBreak
             })
             .ToArray();
 
-        // Get the immediate caller's info from the stack (more accurate than caller attributes for nested calls)
-        var callerFrame = relevantFrames.FirstOrDefault();
-        var file = callerFrame?.File ?? callerFile;
-        var line = callerFrame?.Line > 0 ? callerFrame.Line : callerLine;
-        var column = callerFrame?.Column ?? 0;
-        var method = callerFrame?.Method ?? callerMember;
-        var type = callerFrame?.Type ?? "<unknown>";
+        // Use caller attributes (more accurate for async methods which get wrapped in state machines)
+        var file = callerFile;
+        var line = callerLine;
+        var method = callerMember;
 
-        // Try to read source context
-        var sourceContext = SourceReader.GetContext(file, line, contextLines: 5);
+        // Try to find the actual declaring type from the file path
+        var type = TryGetTypeFromFile(callerFile) ?? relevantFrames.FirstOrDefault()?.Type ?? "<unknown>";
+        var column = relevantFrames.FirstOrDefault()?.Column ?? 0;
+
+        // Try to read source context (20 lines above and below)
+        var sourceContext = SourceReader.GetContext(file, line, contextLines: 20);
 
         return new BreakpointContext
         {
@@ -146,5 +147,16 @@ public static class DebugBreak
             SourceStartLine = sourceContext?.StartLine ?? 0,
             HitTime = DateTime.UtcNow
         };
+    }
+
+    private static string? TryGetTypeFromFile(string? filePath)
+    {
+        if (string.IsNullOrEmpty(filePath))
+            return null;
+
+        // Extract a reasonable type name from the file path
+        // e.g., "/path/to/MyService.cs" -> "MyService"
+        var fileName = Path.GetFileNameWithoutExtension(filePath);
+        return fileName;
     }
 }
