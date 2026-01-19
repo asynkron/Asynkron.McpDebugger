@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Asynkron.McpDebugger.Server</RootNamespace>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>mcpdebugger</ToolCommandName>
+    <PackageId>Asynkron.McpDebugger</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>Asynkron</Authors>
+    <Description>AI-controlled cooperative debugger via MCP</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Asynkron.McpDebugger.Client\Asynkron.McpDebugger.Client.csproj" />
+  </ItemGroup>
+
+</Project>
